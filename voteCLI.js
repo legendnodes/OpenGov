@@ -41,22 +41,39 @@ async function main() {
     const referendumsInput = await askQuestion("Enter referendum indexes (comma-separated): ");
     const referendums = referendumsInput.split(',').map(r => r.trim());
     
+    //const voteTypes = {};
+    //for (const referendum of referendums) {
+    //    voteTypes[referendum] = await getValidatedInput(
+    //       `Vote type for referendum ${referendum} (aye/nay): `,
+    //        input => ["aye", "nay"].includes(input.toLowerCase())
+    //    );
+    //}
+
+    //const convictions = {};
+    //for (const referendum of referendums) {
+    //    convictions[referendum] = await getValidatedInput(
+    //        `Conviction multiplier for referendum ${referendum} (1-6): `,
+    //        input => !isNaN(input) && parseInt(input) >= 1 && parseInt(input) <= 6
+    //    );
+    //}
+
     const voteTypes = {};
+    const convictions = {};
+
     for (const referendum of referendums) {
         voteTypes[referendum] = await getValidatedInput(
             `Vote type for referendum ${referendum} (aye/nay): `,
             input => ["aye", "nay"].includes(input.toLowerCase())
         );
-    }
 
-    const convictions = {};
-    for (const referendum of referendums) {
         convictions[referendum] = await getValidatedInput(
             `Conviction multiplier for referendum ${referendum} (1-6): `,
             input => !isNaN(input) && parseInt(input) >= 1 && parseInt(input) <= 6
         );
     }
 
+
+    
     let firstProxiedAccount = true;
     const allVotes = [];
     
