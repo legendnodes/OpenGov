@@ -138,8 +138,8 @@ async function main() {
                 });
             });
 
-            console.log("⏳ Waiting 10 seconds before next vote...");
-            await new Promise(resolve => setTimeout(resolve, 10000));
+            console.log("⏳ Waiting 5 seconds before next vote...");
+            await new Promise(resolve => setTimeout(resolve, 5000));
         }
     }
 
